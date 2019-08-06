@@ -13,8 +13,9 @@ class CreateCalculoImpuestosTable extends Migration
      */
     public function up()
     {
-        Schema::create('calculo_impuestos', function (Blueprint $table) {
+        Schema::create('calculos_impuestos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateCalculoImpuestosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calculo_impuestos');
+        Schema::dropIfExists('calculos_impuestos');
     }
 }

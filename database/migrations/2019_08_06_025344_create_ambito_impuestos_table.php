@@ -13,8 +13,9 @@ class CreateAmbitoImpuestosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ambito_impuestos', function (Blueprint $table) {
+        Schema::create('ambitos_impuestos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateAmbitoImpuestosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ambito_impuestos');
+        Schema::dropIfExists('ambitos_impuestos');
     }
 }

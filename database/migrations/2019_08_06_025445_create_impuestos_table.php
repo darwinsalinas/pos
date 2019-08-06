@@ -15,7 +15,15 @@ class CreateImpuestosTable extends Migration
     {
         Schema::create('impuestos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->unsignedBigInteger('ambito_impuesto_id');
+            $table->unsignedBigInteger('calculo_impuesto_id');
+            $table->double('importe');
+            $table->string('etiqueta');
             $table->timestamps();
+
+            $table->foreign('ambito_impuesto_id')->references('id')->on('ambitos_impuestos');
+            $table->foreign('calculo_impuesto_id')->references('id')->on('calculos_impuestos');
         });
     }
 
