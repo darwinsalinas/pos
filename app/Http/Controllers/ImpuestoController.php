@@ -14,7 +14,15 @@ class ImpuestoController extends Controller
      */
     public function index()
     {
-        //
+        $rs = Impuesto::query()
+            ->with([
+                'ambito',
+                'calculo'
+            ])
+            ->get();
+        return response()->json([
+            'data' => $rs
+        ], 200);
     }
 
     /**

@@ -14,7 +14,10 @@ class CalculoImpuestoController extends Controller
      */
     public function index()
     {
-        //
+        $rs = CalculoImpuesto::query()->get();
+        return response()->json([
+            'data' => $rs
+        ], 200);
     }
 
     /**

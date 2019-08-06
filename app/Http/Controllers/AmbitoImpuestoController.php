@@ -14,7 +14,10 @@ class AmbitoImpuestoController extends Controller
      */
     public function index()
     {
-        //
+        $rs = AmbitoImpuesto::query()->get();
+        return response()->json([
+            'data' => $rs
+        ], 200);
     }
 
     /**
