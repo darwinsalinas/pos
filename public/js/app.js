@@ -61821,7 +61821,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Impuestos() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 }
 
 /***/ }),
