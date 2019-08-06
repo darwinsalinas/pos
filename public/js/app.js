@@ -61840,37 +61840,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AmbitoImpuestoList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AmbitoImpuestoList */ "./resources/js/components/Impuestos/AmbitoImpuestoList.js");
 /* harmony import */ var _CalculoImpuestoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CalculoImpuestoList */ "./resources/js/components/Impuestos/CalculoImpuestoList.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 function ImpuestosForm(_ref) {
   var titulo = _ref.titulo;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      form = _useState2[0],
+      setForm = _useState2[1];
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    var url = '/impuestos';
+    axios.post(url, form).then(function (resp) {
+      console.log('completado');
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  var handleChange = function handleChange(e) {
+    setForm(_objectSpread({}, form, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-header"
   }, titulo ? titulo : 'Formulario de impuestos'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Nombre del impuesto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChange,
     type: "text",
     name: "nombre",
     className: "form-control",
     placeholder: "Nombre del impuesto"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AmbitoImpuestoList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     etiqueta: "\xC1mbito del impuesto",
-    name: "ambito_impuesto_id"
+    name: "ambito_impuesto_id",
+    handleChange: handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CalculoImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
     etiqueta: "C\xE1lculo del impuesto",
-    name: "calculo_impuesto_id"
+    name: "calculo_impuesto_id",
+    handleChange: handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChange,
     type: "number",
     name: "importe",
     className: "form-control",
@@ -61880,11 +61920,15 @@ function ImpuestosForm(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Etiqueta en facturas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: handleChange,
     type: "text",
     name: "etiqueta",
     className: "form-control",
     placeholder: "Etiqueta en facturas"
-  }))));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, "Guardar"))));
 }
 
 /***/ }),

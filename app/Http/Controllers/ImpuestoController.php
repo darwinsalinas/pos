@@ -43,7 +43,18 @@ class ImpuestoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required|string',
+            'ambito_impuesto_id' => 'required|integer',
+            'calculo_impuesto_id' => 'required|integer',
+            'importe' => 'required|numeric',
+            'etiqueta' => 'required|string'
+        ]);
+        $model = Impuesto::create($data);
+
+        return response()->json([
+            'data' => $model
+        ], 200);
     }
 
     /**
