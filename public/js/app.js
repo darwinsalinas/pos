@@ -61667,6 +61667,144 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Impuestos/AmbitoImpuestoList.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Impuestos/AmbitoImpuestoList.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AmbitoImpuestoList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function AmbitoImpuestoList(_ref) {
+  var handleChange = _ref.handleChange,
+      etiqueta = _ref.etiqueta,
+      name = _ref.name;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      list = _useState2[0],
+      setList = _useState2[1];
+
+  var getList = function getList() {
+    var url = '/ambitos-impuestos';
+    axios.get(url).then(function (resp) {
+      setList(resp.data.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  var handleChangeEvent = function handleChangeEvent(e) {
+    if (handleChange) {
+      handleChange(e);
+    } else {
+      console.info('no se ha definido una funcion manejadora del evento change');
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(getList, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, etiqueta ? etiqueta : 'Seleccione:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleChangeEvent,
+    className: "form-control",
+    name: name ? name : ''
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: 0
+  }, "Seleccione una opci\xF3n de la lista"), list.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: item.id,
+      value: item.id
+    }, item.nombre);
+  })));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Impuestos/CalculoImpuestoList.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Impuestos/CalculoImpuestoList.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CalculoImpuestoList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function CalculoImpuestoList(_ref) {
+  var handleChange = _ref.handleChange,
+      etiqueta = _ref.etiqueta,
+      name = _ref.name;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      list = _useState2[0],
+      setList = _useState2[1];
+
+  var getList = function getList() {
+    var url = '/calculos-impuestos';
+    axios.get(url).then(function (resp) {
+      setList(resp.data.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  var handleChangeEvent = function handleChangeEvent(e) {
+    if (handleChange) {
+      handleChange(e);
+    } else {
+      console.info('no se ha definido una funcion manejadora del evento change');
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(getList, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, etiqueta ? etiqueta : 'Seleccione:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleChangeEvent,
+    className: "form-control",
+    name: name ? name : ''
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: 0
+  }, "Seleccione una opci\xF3n de la lista"), list.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: item.id,
+      value: item.id
+    }, item.nombre);
+  })));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Impuestos/Impuestos.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/Impuestos/Impuestos.js ***!
@@ -61679,9 +61817,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Impuestos; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImpuestosForm */ "./resources/js/components/Impuestos/ImpuestosForm.js");
+
 
 function Impuestos() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "App de impuestos");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Impuestos/ImpuestosForm.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Impuestos/ImpuestosForm.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImpuestosForm; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _AmbitoImpuestoList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AmbitoImpuestoList */ "./resources/js/components/Impuestos/AmbitoImpuestoList.js");
+/* harmony import */ var _CalculoImpuestoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CalculoImpuestoList */ "./resources/js/components/Impuestos/CalculoImpuestoList.js");
+
+
+
+function ImpuestosForm(_ref) {
+  var titulo = _ref.titulo;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header"
+  }, titulo ? titulo : 'Formulario de impuestos'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Nombre del impuesto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "nombre",
+    className: "form-control",
+    placeholder: "Nombre del impuesto"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AmbitoImpuestoList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    etiqueta: "\xC1mbito del impuesto",
+    name: "ambito_impuesto_id"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CalculoImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    etiqueta: "C\xE1lculo del impuesto",
+    name: "calculo_impuesto_id"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "importe",
+    className: "form-control",
+    placeholder: "Importe"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, "Etiqueta en facturas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "etiqueta",
+    className: "form-control",
+    placeholder: "Etiqueta en facturas"
+  }))));
 }
 
 /***/ }),
@@ -61740,16 +61943,10 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
+        className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))))));
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
     }
   }]);
 

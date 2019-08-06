@@ -1,9 +1,11 @@
 import React from 'react'
+import ImpuestosForm from './ImpuestosForm';
+
 
 export default function Impuestos() {
     return (
         <div>
-            App de impuestos
+            <ImpuestosForm />
         </div>
     )
 }
