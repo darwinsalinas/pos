@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Impuestos from './Impuestos/Impuestos';
 
-export default class Example extends Component {
+export default class Pos extends Component {
     render() {
         return (
             <div className="container">
@@ -10,7 +11,9 @@ export default class Example extends Component {
                         <div className="card">
                             <div className="card-header">Example Component</div>
 
-                            <div className="card-body">I'm an example component!</div>
+                            <div className="card-body">
+                                <Impuestos />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -19,6 +22,6 @@ export default class Example extends Component {
     }
 }
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById('appimpuestos')) {
+    ReactDOM.render(<Pos />, document.getElementById('appimpuestos'));
 }
