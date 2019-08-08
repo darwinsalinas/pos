@@ -61805,6 +61805,35 @@ function CalculoImpuestoList(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Impuestos/ImpuestoList.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Impuestos/ImpuestoList.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ImpuestoList = function ImpuestoList() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "impuestos_id"
+  }, "Impuestos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "form-control",
+    name: "impuestos_id",
+    multiple: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n4"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ImpuestoList);
+
+/***/ }),
+
 /***/ "./resources/js/components/Impuestos/Impuestos.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/Impuestos/Impuestos.js ***!
@@ -61818,10 +61847,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImpuestosForm */ "./resources/js/components/Impuestos/ImpuestosForm.js");
+/* harmony import */ var _ImpuestoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImpuestoList */ "./resources/js/components/Impuestos/ImpuestoList.js");
+
 
 
 function Impuestos() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /***/ }),

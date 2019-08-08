@@ -33,10 +33,5 @@ export default function AmbitoImpuestoList({ handleChange, etiqueta, name }) {
                 }
             </select>
         </div>
-
-
-
-
-
     )
 }

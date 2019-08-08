@@ -57,9 +57,7 @@ export default function ImpuestosForm({ titulo }) {
                         <input onChange={handleChange} type="text" name="etiqueta" className="form-control" placeholder="Etiqueta en facturas" />
                     </div>
 
-
                     <button type="submit" className="btn btn-primary">Guardar</button>
-
                 </form>
             </div>
         </div>

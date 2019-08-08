@@ -21,8 +21,6 @@ export default function CalculoImpuestoList({ handleChange, etiqueta, name }) {
         }
     }
     useEffect(getList, [])
-
-
     return (
         <div className="form-group">
             <label htmlFor="">{etiqueta ? etiqueta : 'Seleccione:'}</label>
