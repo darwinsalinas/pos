@@ -14,7 +14,15 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $rs = Producto::with([
+            'tipoProducto',
+            'categoriaProducto',
+            'impuestos'
+        ])->get();
+
+        return response()->json([
+            'data' => $rs
+        ], 200);
     }
 
     /**

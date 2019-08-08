@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoProducto extends Model
 {
-    // Consimile y Servicio
+    // Consumible y Servicio, etc
+    protected $table = 'tipos_productos';
 }

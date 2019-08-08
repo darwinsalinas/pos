@@ -22,3 +22,9 @@ Route::apiResource('impuestos', 'ImpuestoController', [
         'impuestos' => 'model'
     ]
 ]);
+
+Route::apiResource('productos', 'ProductoController', [
+    'parameters' => [
+        'producto' => 'model'
+    ]
+]);
