@@ -61816,18 +61816,64 @@ function CalculoImpuestoList(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var ImpuestoList = function ImpuestoList() {
+
+var ImpuestoList = function ImpuestoList(_ref) {
+  var onChange = _ref.onChange;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      lista = _useState2[0],
+      setLista = _useState2[1];
+
+  var loadData = function loadData() {
+    var url = '/impuestos';
+    axios.get(url).then(function (resp) {
+      setLista(resp.data.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  var handleChange = function handleChange(e) {
+    var seleccionadosSrc = e.target.selectedOptions;
+    var seleccionados = [];
+
+    for (var i = 0; i < seleccionadosSrc.length; i++) {
+      seleccionados.push(seleccionadosSrc.item(i).value);
+    }
+
+    if (onChange) {
+      onChange(seleccionados);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "impuestos_id"
   }, "Impuestos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleChange,
     className: "form-control",
     name: "impuestos_id",
     multiple: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciones una upci\xF3n4"))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "0"
+  }, "Selecciones una upci\xF3n"), lista.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: item.id,
+      key: item.id
+    }, item.nombre);
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ImpuestoList);
@@ -61852,11 +61898,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Impuestos() {
+  var handleChange = function handleChange(seleccionados) {
+    console.log(seleccionados);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onChange: handleChange
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /***/ }),
@@ -61968,6 +62020,113 @@ function ImpuestosForm(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Impuestos/TablaImpuestos.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Impuestos/TablaImpuestos.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaImpuestos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TablaImpuestosItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TablaImpuestosItem */ "./resources/js/components/Impuestos/TablaImpuestosItem.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function TablaImpuestos() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      impuestos = _useState2[0],
+      setImpuestos = _useState2[1];
+
+  var loadData = function loadData() {
+    var url = "/impuestos";
+    axios.get(url).then(function (resp) {
+      setImpuestos(resp.data.data);
+    })["catch"](function (err) {
+      console.log(err.response.data.message);
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nombre"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\xC1mbito"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "C\xE1lculo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Etiqueta"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-group btn-group-sm",
+    role: "group",
+    "aria-label": ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-primary"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-plus"
+  }), "   Agregar"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, impuestos.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaImpuestosItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: item.id,
+      nombre: item.nombre,
+      ambito: item.ambito.nombre,
+      calculo: item.calculo.nombre,
+      importe: item.importe,
+      etiqueta: item.etiqueta
+    });
+  })));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Impuestos/TablaImpuestosItem.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Impuestos/TablaImpuestosItem.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaImpuestosItem; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function TablaImpuestosItem(_ref) {
+  var nombre = _ref.nombre,
+      ambito = _ref.ambito,
+      calculo = _ref.calculo,
+      importe = _ref.importe,
+      etiqueta = _ref.etiqueta;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ambito), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, calculo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, importe), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, etiqueta), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-group btn-group-sm",
+    role: "group",
+    "aria-label": ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-eye"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-pencil-alt"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-danger"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-trash"
+  })))));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Pos.js":
 /*!****************************************!*\
   !*** ./resources/js/components/Pos.js ***!
@@ -61983,6 +62142,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Impuestos/Impuestos */ "./resources/js/components/Impuestos/Impuestos.js");
+/* harmony import */ var _Impuestos_TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Impuestos/TablaImpuestos */ "./resources/js/components/Impuestos/TablaImpuestos.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62000,6 +62160,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -62025,7 +62186,7 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
     }
   }]);
 
