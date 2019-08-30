@@ -1,6 +1,14 @@
 import React from 'react'
 
-export default function TablaImpuestosItem({id, nombre, ambito, calculo, importe, etiqueta, hadleEdit}) {
+export default function TablaImpuestosItem({
+    id,
+    nombre,
+    ambito,
+    calculo,
+    importe,
+    etiqueta,
+    hadleEdit
+}) {
     return (
         <tr>
             <td>{nombre}</td>
