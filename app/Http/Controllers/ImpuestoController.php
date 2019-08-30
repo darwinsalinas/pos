@@ -94,9 +94,22 @@ class ImpuestoController extends Controller
      * @param  \App\Impuesto  $impuesto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Impuesto $impuesto)
+    public function update(Request $request, Impuesto $model)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required|string',
+            'ambito_impuesto_id' => 'required|integer',
+            'calculo_impuesto_id' => 'required|integer',
+            'importe' => 'required|numeric',
+            'etiqueta' => 'required|string'
+        ]);
+
+        $model->update($data);
+
+        return response()->json([
+            'data' => $model,
+            'message' => 'success'
+        ], 200);
     }
 
     /**

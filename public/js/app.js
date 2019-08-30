@@ -62006,6 +62006,7 @@ function ImpuestosForm(_ref) {
 
     if (id) {
       method = 'PATCH';
+      url = "/impuestos/".concat(id);
     }
 
     axios({

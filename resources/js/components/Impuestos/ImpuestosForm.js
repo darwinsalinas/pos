@@ -16,10 +16,11 @@ export default function ImpuestosForm({ titulo, id, toggleModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const url = '/impuestos'
+        let url = '/impuestos'
         let method = 'POST'
         if (id) {
             method = 'PATCH'
+            url = `/impuestos/${id}`
         }
         axios({
             method: method, url: url, data: form
