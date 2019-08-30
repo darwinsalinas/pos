@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TablaImpuestosItem({nombre, ambito, calculo, importe, etiqueta}) {
+export default function TablaImpuestosItem({id, nombre, ambito, calculo, importe, etiqueta, hadleEdit}) {
     return (
         <tr>
             <td>{nombre}</td>
@@ -13,7 +13,7 @@ export default function TablaImpuestosItem({nombre, ambito, calculo, importe, et
                     <button type="button" className="btn btn-secondary">
                         <i className="fa fa-eye"></i>
                     </button>
-                    <button type="button" className="btn btn-secondary">
+                    <button onClick={() => hadleEdit(id)} type="button" className="btn btn-secondary">
                         <i className="fa fa-pencil-alt"></i>
                     </button>
                     <button type="button" className="btn btn-danger">

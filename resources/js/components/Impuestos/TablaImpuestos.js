@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TablaImpuestosItem from './TablaImpuestosItem';
 
-export default function TablaImpuestos() {
+export default function TablaImpuestos({hadleEdit}) {
 
     const [impuestos, setImpuestos] = useState([])
 
@@ -14,6 +14,10 @@ export default function TablaImpuestos() {
         .catch(err => {
             console.log(err.response.data.message)
         })
+    }
+
+    const editar = (id) => {
+        hadleEdit(id)
     }
 
     useEffect(loadData, [])
@@ -41,11 +45,13 @@ export default function TablaImpuestos() {
                     impuestos.map(item => (
                         <TablaImpuestosItem
                             key={item.id}
+                            id={item.id}
                             nombre={item.nombre}
                             ambito={item.ambito.nombre}
                             calculo={item.calculo.nombre}
                             importe={item.importe}
                             etiqueta={item.etiqueta}
+                            hadleEdit={editar}
                         />
                     ))
                 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export default function CalculoImpuestoList({ handleChange, etiqueta, name }) {
+export default function CalculoImpuestoList({ handleChange, etiqueta, name, selected }) {
 
     const [list, setList] = useState([])
     const getList = () => {
@@ -24,7 +24,7 @@ export default function CalculoImpuestoList({ handleChange, etiqueta, name }) {
     return (
         <div className="form-group">
             <label htmlFor="">{etiqueta ? etiqueta : 'Seleccione:'}</label>
-            <select onChange={handleChangeEvent} className="form-control" name={name ? name : ''}>
+            <select onChange={handleChangeEvent} className="form-control" name={name ? name : ''} value={selected}>
                 <option value={0}>Seleccione una opción de la lista</option>
                 {
                     list.map(item => <option key={item.id} value={item.id}>{item.nombre}</option>)

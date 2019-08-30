@@ -63,9 +63,17 @@ class ImpuestoController extends Controller
      * @param  \App\Impuesto  $impuesto
      * @return \Illuminate\Http\Response
      */
-    public function show(Impuesto $impuesto)
+    public function show(Impuesto $model)
     {
-        //
+        $model->load([
+            'ambito',
+            'calculo'
+        ]);
+
+        return response()->json([
+            'data' => $model,
+            'message' => 'success'
+        ], 200);
     }
 
     /**

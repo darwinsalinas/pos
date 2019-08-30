@@ -61691,7 +61691,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function AmbitoImpuestoList(_ref) {
   var handleChange = _ref.handleChange,
       etiqueta = _ref.etiqueta,
-      name = _ref.name;
+      name = _ref.name,
+      selected = _ref.selected;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -61723,7 +61724,8 @@ function AmbitoImpuestoList(_ref) {
   }, etiqueta ? etiqueta : 'Seleccione:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     onChange: handleChangeEvent,
     className: "form-control",
-    name: name ? name : ''
+    name: name ? name : '',
+    value: selected
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: 0
   }, "Seleccione una opci\xF3n de la lista"), list.map(function (item) {
@@ -61760,7 +61762,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function CalculoImpuestoList(_ref) {
   var handleChange = _ref.handleChange,
       etiqueta = _ref.etiqueta,
-      name = _ref.name;
+      name = _ref.name,
+      selected = _ref.selected;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -61792,7 +61795,8 @@ function CalculoImpuestoList(_ref) {
   }, etiqueta ? etiqueta : 'Seleccione:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     onChange: handleChangeEvent,
     className: "form-control",
-    name: name ? name : ''
+    name: name ? name : '',
+    value: selected
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: 0
   }, "Seleccione una opci\xF3n de la lista"), list.map(function (item) {
@@ -61894,21 +61898,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImpuestosForm */ "./resources/js/components/Impuestos/ImpuestosForm.js");
 /* harmony import */ var _ImpuestoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImpuestoList */ "./resources/js/components/Impuestos/ImpuestoList.js");
+/* harmony import */ var _TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TablaImpuestos */ "./resources/js/components/Impuestos/TablaImpuestos.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
 function Impuestos() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showModalForm = _useState2[0],
+      setShowModalForm = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentItem = _useState4[0],
+      setCurrentItem = _useState4[1];
+
   var handleChange = function handleChange(seleccionados) {
     console.log(seleccionados);
+  };
+
+  var hadleEdit = function hadleEdit(id) {
+    setShowModalForm(true);
+    setCurrentItem(id);
+    console.log('editar', id);
+  };
+
+  var toggleModal = function toggleModal() {
+    setShowModalForm(!showModalForm);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    onChange: handleChange
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    hadleEdit: hadleEdit
+  }), showModalForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ImpuestosForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    id: currentItem,
+    toggleModal: toggleModal
+  }))));
 }
 
 /***/ }),
@@ -61945,9 +61982,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ImpuestosForm(_ref) {
-  var titulo = _ref.titulo;
+  var titulo = _ref.titulo,
+      id = _ref.id,
+      toggleModal = _ref.toggleModal;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    nombre: '',
+    importe: 0,
+    etiqueta: '',
+    ambito_impuesto_id: '',
+    calculo_impuesto_id: '',
+    ambito: null,
+    calculo: null
+  }),
       _useState2 = _slicedToArray(_useState, 2),
       form = _useState2[0],
       setForm = _useState2[1];
@@ -61955,17 +62002,37 @@ function ImpuestosForm(_ref) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var url = '/impuestos';
-    axios.post(url, form).then(function (resp) {
+    var method = 'POST';
+
+    if (id) {
+      method = 'PATCH';
+    }
+
+    axios({
+      method: method,
+      url: url,
+      data: form
+    }).then(function (resp) {
       console.log('completado');
     })["catch"](function (err) {
       console.log(err);
     });
   };
 
-  var handleChange = function handleChange(e) {
+  var _handleChange = function handleChange(e) {
     setForm(_objectSpread({}, form, _defineProperty({}, e.target.name, e.target.value)));
   };
 
+  var loadData = function loadData() {
+    var url = "impuestos/".concat(id);
+    axios.get(url).then(function (resp) {
+      setForm(_objectSpread({}, resp.data.data));
+    })["catch"](function (err) {
+      console.log(err.response.data.message);
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, [id]);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -61979,25 +62046,31 @@ function ImpuestosForm(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Nombre del impuesto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    onChange: handleChange,
+    onChange: _handleChange,
+    value: form.nombre,
     type: "text",
     name: "nombre",
     className: "form-control",
     placeholder: "Nombre del impuesto"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AmbitoImpuestoList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    selected: form.ambito_impuesto_id,
     etiqueta: "\xC1mbito del impuesto",
     name: "ambito_impuesto_id",
-    handleChange: handleChange
+    handleChange: _handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CalculoImpuestoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    selected: form.calculo_impuesto_id,
     etiqueta: "C\xE1lculo del impuesto",
     name: "calculo_impuesto_id",
-    handleChange: handleChange
+    handleChange: function handleChange(e) {
+      return _handleChange(e);
+    }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Importe"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    onChange: handleChange,
+    onChange: _handleChange,
+    value: form.importe,
     type: "number",
     name: "importe",
     className: "form-control",
@@ -62007,7 +62080,8 @@ function ImpuestosForm(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, "Etiqueta en facturas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    onChange: handleChange,
+    onChange: _handleChange,
+    value: form.etiqueta,
     type: "text",
     name: "etiqueta",
     className: "form-control",
@@ -62015,7 +62089,11 @@ function ImpuestosForm(_ref) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-primary"
-  }, "Guardar"))));
+  }, "Guardar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: toggleModal,
+    type: "submit",
+    className: "btn btn-primary"
+  }, "Cancelar"))));
 }
 
 /***/ }),
@@ -62043,7 +62121,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TablaImpuestos() {
+function TablaImpuestos(_ref) {
+  var hadleEdit = _ref.hadleEdit;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       impuestos = _useState2[0],
@@ -62056,6 +62136,10 @@ function TablaImpuestos() {
     })["catch"](function (err) {
       console.log(err.response.data.message);
     });
+  };
+
+  var editar = function editar(id) {
+    hadleEdit(id);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, []);
@@ -62073,11 +62157,13 @@ function TablaImpuestos() {
   }), "   Agregar"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, impuestos.map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaImpuestosItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: item.id,
+      id: item.id,
       nombre: item.nombre,
       ambito: item.ambito.nombre,
       calculo: item.calculo.nombre,
       importe: item.importe,
-      etiqueta: item.etiqueta
+      etiqueta: item.etiqueta,
+      hadleEdit: editar
     });
   })));
 }
@@ -62098,11 +62184,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 function TablaImpuestosItem(_ref) {
-  var nombre = _ref.nombre,
+  var id = _ref.id,
+      nombre = _ref.nombre,
       ambito = _ref.ambito,
       calculo = _ref.calculo,
       importe = _ref.importe,
-      etiqueta = _ref.etiqueta;
+      etiqueta = _ref.etiqueta,
+      hadleEdit = _ref.hadleEdit;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ambito), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, calculo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, importe), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, etiqueta), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "btn-group btn-group-sm",
     role: "group",
@@ -62113,6 +62201,9 @@ function TablaImpuestosItem(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-eye"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return hadleEdit(id);
+    },
     type: "button",
     className: "btn btn-secondary"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -62142,7 +62233,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Impuestos/Impuestos */ "./resources/js/components/Impuestos/Impuestos.js");
-/* harmony import */ var _Impuestos_TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Impuestos/TablaImpuestos */ "./resources/js/components/Impuestos/TablaImpuestos.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62160,7 +62250,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -62186,7 +62275,7 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_TablaImpuestos__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
     }
   }]);
 
