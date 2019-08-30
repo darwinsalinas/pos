@@ -8,12 +8,8 @@ export default function TablaImpuestos({hadleEdit}) {
     const loadData = () => {
         let url = `/impuestos`
         axios.get(url)
-        .then(resp => {
-            setImpuestos(resp.data.data)
-        })
-        .catch(err => {
-            console.log(err.response.data.message)
-        })
+        .then(resp => {setImpuestos(resp.data.data)})
+        .catch(err => {console.log(err.response.data.message)})
     }
 
     const editar = (id) => {
