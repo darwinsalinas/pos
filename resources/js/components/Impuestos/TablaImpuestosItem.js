@@ -7,7 +7,8 @@ export default function TablaImpuestosItem({
     calculo,
     importe,
     etiqueta,
-    hadleEdit
+    hadleEdit,
+    handleDelete
 }) {
     return (
         <tr>
@@ -24,7 +25,7 @@ export default function TablaImpuestosItem({
                     <button onClick={() => hadleEdit(id)} type="button" className="btn btn-secondary">
                         <i className="fa fa-pencil-alt"></i>
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button onClick={() => handleDelete(id)} type="button" className="btn btn-danger">
                         <i className="fa fa-trash"></i>
                     </button>
                 </div>

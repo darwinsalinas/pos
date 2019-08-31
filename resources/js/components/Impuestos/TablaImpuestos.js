@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import TablaImpuestosItem from './TablaImpuestosItem';
 
-export default function TablaImpuestos({hadleEdit}) {
-
-    const [impuestos, setImpuestos] = useState([])
-
-    const loadData = () => {
-        let url = `/impuestos`
-        axios.get(url)
-        .then(resp => {setImpuestos(resp.data.data)})
-        .catch(err => {console.log(err.response.data.message)})
-    }
-
+export default function TablaImpuestos({hadleEdit, handleDelete, handleAdd, lista}) {
     const editar = (id) => {
         hadleEdit(id)
     }
 
-    useEffect(loadData, [])
+    const eliminar = (id) => {
+        handleDelete(id)
+    }
+
+    const agregar = () => {
+        handleAdd()
+    }
 
     return (
         <table className="table">
@@ -29,7 +25,7 @@ export default function TablaImpuestos({hadleEdit}) {
                     <th>Etiqueta</th>
                     <th>
                         <div className="btn-group btn-group-sm" role="group" aria-label="">
-                            <button type="button" className="btn btn-primary">
+                            <button onClick={agregar} type="button" className="btn btn-primary">
                                 <i className="fa fa-plus"></i>   Agregar
                             </button>
                         </div>
@@ -38,7 +34,7 @@ export default function TablaImpuestos({hadleEdit}) {
             </thead>
             <tbody>
                 {
-                    impuestos.map(item => (
+                    lista.map(item => (
                         <TablaImpuestosItem
                             key={item.id}
                             id={item.id}
@@ -48,6 +44,8 @@ export default function TablaImpuestos({hadleEdit}) {
                             importe={item.importe}
                             etiqueta={item.etiqueta}
                             hadleEdit={editar}
+                            handleDelete={eliminar}
+                            handleAdd={agregar}
                         />
                     ))
                 }

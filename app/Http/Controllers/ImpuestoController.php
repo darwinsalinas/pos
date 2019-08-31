@@ -118,8 +118,12 @@ class ImpuestoController extends Controller
      * @param  \App\Impuesto  $impuesto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Impuesto $impuesto)
+    public function destroy(Impuesto $model)
     {
-        //
+        $model->delete();
+
+        return response()->json([
+            'message' => 'success'
+        ], 200);
     }
 }
