@@ -1,16 +1,11 @@
 import React, {useState} from 'react'
 import ImpuestosForm from './ImpuestosForm';
-import ImpuestoList from './ImpuestoList';
 import TablaImpuestos from './TablaImpuestos';
 
 export default function Impuestos() {
 
     const [showModalForm, setShowModalForm] = useState(false)
     const [currentItem, setCurrentItem] = useState(null)
-
-    const handleChange = (seleccionados) => {
-        console.log(seleccionados)
-    }
 
     const hadleEdit = (id) => {
         setShowModalForm(true)
