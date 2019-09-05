@@ -43,7 +43,20 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required|string',
+            'disponible' => 'required|boolean',
+            'costo' => 'required|numeric',
+            'precio_venta' => 'required|numeric',
+            'tipo_producto_id' => 'required|integer',
+            'categoria_producto_id' => 'required|integer'
+        ]);
+
+        $model = Producto::create($data);
+
+        return response()->json([
+            'message' => 'success'
+        ], 200);
     }
 
     /**

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
+    protected $guarded = [];
+
     public function tipoProducto()
     {
         return $this->belongsTo(TipoProducto::class);
