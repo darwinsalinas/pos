@@ -21,3 +21,5 @@ mix.options({
 mix.react('resources/js/app.js', 'public/js')
     .react('resources/js/appinventario.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+    mix.extract();

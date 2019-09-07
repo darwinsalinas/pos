@@ -3,9 +3,8 @@ Route::get('inventarios', function () {
     return view('inventario');
 });
 Route::get('/', 'HomeController@index');
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
+Auth::routes();
 Route::apiResource('ambitos-impuestos', 'AmbitoImpuestoController', [
     'parameters' => [
         'ambitos-impuestos' => 'model'

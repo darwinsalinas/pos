@@ -21,6 +21,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="/js/manifest.js"></script>
+    <script src="{{ asset('js/vendor.js') }}" defer></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 
 

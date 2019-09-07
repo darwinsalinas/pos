@@ -1,4 +1,4 @@
-@extends('templates.base')
+@extends('templates.aplicacion')
 
 @section('content')
 <div id="appimpuestos">
