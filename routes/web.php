@@ -28,3 +28,9 @@ Route::apiResource('productos', 'ProductoController', [
         'producto' => 'model'
     ]
 ]);
+
+Route::apiResource('notificaciones', 'NotificaionesController', [
+    'parameters' => [
+        'notificaciones' => 'model'
+    ]
+]);

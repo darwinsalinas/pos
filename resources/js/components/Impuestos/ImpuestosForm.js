@@ -4,6 +4,10 @@ import CalculoImpuestoList from './CalculoImpuestoList';
 
 export default function ImpuestosForm({ titulo, id, toggleModal, handleSubmit, form, handleChange }) {
     let styles = { display: "block" }
+    let modalStyle = {
+        maxHeight: '70vh',
+        overflow: 'scroll-y'
+    }
     return (
 
         <div className="modal" style={styles} role="dialog" aria-modal="true">
@@ -15,7 +19,7 @@ export default function ImpuestosForm({ titulo, id, toggleModal, handleSubmit, f
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
+                    <div className="modal-body" style={modalStyle}>
                         <form onSubmit={handleSubmit}>
 
                             <div className="form-group">

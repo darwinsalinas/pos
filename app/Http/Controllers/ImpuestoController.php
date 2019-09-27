@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Impuesto;
+use App\Notifications\ImpuestoCreado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ImpuestoController extends Controller
 {
@@ -51,6 +53,12 @@ class ImpuestoController extends Controller
             'etiqueta' => 'required|string'
         ]);
         $model = Impuesto::create($data);
+
+        if ($model) {
+            $user = auth()->user();
+            Notification::send($user, new ImpuestoCreado($model));
+        }
+
 
         return response()->json([
             'data' => $model

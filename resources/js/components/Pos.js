@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Impuestos from './Impuestos/Impuestos';
 import Productos from './productos/Productos';
+import Loader from './comunes/Loader';
 
 export default function Pos() {
 
@@ -26,7 +27,7 @@ export default function Pos() {
                 </div>
             </div>
             <div className="card-body">
-                <Productos />
+                <Impuestos />
             </div>
         </div>
     );

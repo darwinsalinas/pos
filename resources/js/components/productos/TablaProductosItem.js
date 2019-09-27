@@ -1,4 +1,6 @@
 import React from 'react'
+import Boton from '../comunes/Boton'
+import Button from '../comunes/Button'
 
 export default function TablaProductosItem({
     id,
@@ -11,6 +13,7 @@ export default function TablaProductosItem({
     handleEdit,
     handleDelete
 }) {
+
     return (
         <tr>
             <td>{nombre}</td>
@@ -27,6 +30,10 @@ export default function TablaProductosItem({
             </td>
             <td>
                 <div className="btn-group btn-group-sm" role="group" aria-label="">
+                    <Button />
+                    <Button texto="Editar" icono="pencil-alt" accion={() => handleEdit(id)} />
+                    <Button tipo="warning" icono="trash"/>
+                    <Button tipo="danger"/>
                     <button type="button" className="btn btn-secondary">
                         <i className="fa fa-eye"></i>
                     </button>

@@ -18,7 +18,9 @@ class ProductoController extends Controller
             'tipoProducto',
             'categoriaProducto',
             'impuestos'
-        ])->get();
+        ])
+        // ->get();
+        ->paginate();
 
         return response()->json([
             'data' => $rs

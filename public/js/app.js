@@ -444,6 +444,10 @@ function ImpuestosForm(_ref) {
   var styles = {
     display: "block"
   };
+  var modalStyle = {
+    maxHeight: '70vh',
+    overflow: 'scroll-y'
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal",
     style: styles,
@@ -466,7 +470,8 @@ function ImpuestosForm(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     "aria-hidden": "true"
   }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-body"
+    className: "modal-body",
+    style: modalStyle
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -666,6 +671,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Impuestos/Impuestos */ "./resources/js/components/Impuestos/Impuestos.js");
 /* harmony import */ var _productos_Productos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./productos/Productos */ "./resources/js/components/productos/Productos.js");
+/* harmony import */ var _comunes_Loader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comunes/Loader */ "./resources/js/components/comunes/Loader.js");
+
 
 
 
@@ -716,11 +723,91 @@ function Pos() {
     href: "#"
   }, "Something else here")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_productos_Productos__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 }
 
 if (document.getElementById('appimpuestos')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Pos, null), document.getElementById('appimpuestos'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/comunes/Boton.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/comunes/Boton.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Boton; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Boton(_ref) {
+  var texto = _ref.texto,
+      tipo = _ref.tipo,
+      accion = _ref.accion,
+      icono = _ref.icono;
+  var tipBoton = tipo ? tipo : 'primary';
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: accion,
+    className: "btn btn-".concat(tipBoton)
+  }, icono ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas ".concat(icono)
+  }) : null, texto ? " ".concat(texto) : ' Click');
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/comunes/Button.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/comunes/Button.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Button; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Button(_ref) {
+  var texto = _ref.texto,
+      tipo = _ref.tipo,
+      icono = _ref.icono,
+      accion = _ref.accion;
+  var tipoBoton = tipo ? "btn btn-".concat(tipo) : 'btn btn-primary';
+  var iconoBoton = icono ? "fa fa-".concat(icono) : '';
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: accion,
+    className: tipoBoton
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: iconoBoton
+  }), texto ? ' ' + texto : 'Click');
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/comunes/Loader.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/comunes/Loader.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Loader; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Loader() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loader"
+  }, "Cargando...");
 }
 
 /***/ }),
@@ -760,6 +847,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _TablaProductos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TablaProductos */ "./resources/js/components/productos/TablaProductos.js");
 /* harmony import */ var _comunes_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../comunes/Loading */ "./resources/js/components/comunes/Loading.js");
+/* harmony import */ var _comunes_Loader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../comunes/Loader */ "./resources/js/components/comunes/Loader.js");
+/* harmony import */ var _Impuestos_ImpuestosForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Impuestos/ImpuestosForm */ "./resources/js/components/Impuestos/ImpuestosForm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -777,23 +866,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function Productos() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    data: []
+  }),
       _useState2 = _slicedToArray(_useState, 2),
       lista = _useState2[0],
       setLista = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState4 = _slicedToArray(_useState3, 2),
-      showModalForm = _useState4[0],
-      setShowModalForm = _useState4[1];
+      loading = _useState4[0],
+      setLoading = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      currentItem = _useState6[0],
-      setCurrentItem = _useState6[1];
+      showModalForm = _useState6[0],
+      setShowModalForm = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      currentItem = _useState8[0],
+      setCurrentItem = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     nombre: '',
     disponible: false,
     costo: 0,
@@ -803,9 +901,9 @@ function Productos() {
     tipo_producto: null,
     categoria_producto: null
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      form = _useState8[0],
-      setForm = _useState8[1];
+      _useState10 = _slicedToArray(_useState9, 2),
+      form = _useState10[0],
+      setForm = _useState10[1];
 
   var loadDataSingle = function loadDataSingle() {
     if (currentItem) {
@@ -868,10 +966,18 @@ function Productos() {
   };
 
   var loadData = function loadData() {
-    var url = "/productos";
+    var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/productos';
+
+    if (!url) {
+      return;
+    } //let url = `/productos`
+
+
     axios.get(url).then(function (resp) {
+      setLoading(false);
       setLista(resp.data.data);
     })["catch"](function (err) {
+      setLoading(false);
       console.log(err.response.data.message);
     });
   };
@@ -885,11 +991,29 @@ function Productos() {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
-  }, lista.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductos__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    lista: lista,
+  }, loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Loader__WEBPACK_IMPORTED_MODULE_3__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductos__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    lista: lista.data,
     handleEdit: handleEdit,
     handleDelete: handleDelete
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Loading__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    "aria-label": "Page navigation example"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "pagination"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "page-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return loadData(lista.prev_page_url);
+    },
+    className: "page-link"
+  }, "Anterior")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "page-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return loadData(lista.next_page_url);
+    },
+    className: "page-link"
+  }, "Siguiente"))))));
 }
 
 /***/ }),
@@ -916,16 +1040,21 @@ function TablaProductos(_ref) {
       handleDelete = _ref.handleDelete,
       handleAdd = _ref.handleAdd,
       lista = _ref.lista;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "table"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Costo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Precio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Catagor\xEDa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Disponible"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, lista.map(function (item) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductosItem__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
-      key: item.id
-    }, item, {
-      handleDelete: handleDelete,
-      handleEdit: handleEdit
-    }));
-  })));
+
+  if (lista.length > 0) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "table"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Costo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Precio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Catagor\xEDa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Disponible"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, lista.map(function (item) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductosItem__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+        key: item.id
+      }, item, {
+        handleDelete: handleDelete,
+        handleEdit: handleEdit
+      }));
+    })));
+  }
+
+  return 'No hay datos';
 }
 
 /***/ }),
@@ -942,6 +1071,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TablaProductosItem; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _comunes_Boton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../comunes/Boton */ "./resources/js/components/comunes/Boton.js");
+/* harmony import */ var _comunes_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../comunes/Button */ "./resources/js/components/comunes/Button.js");
+
+
 
 function TablaProductosItem(_ref) {
   var id = _ref.id,
@@ -961,7 +1094,18 @@ function TablaProductosItem(_ref) {
     className: "btn-group btn-group-sm",
     role: "group",
     "aria-label": ""
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    texto: "Editar",
+    icono: "pencil-alt",
+    accion: function accion() {
+      return handleEdit(id);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tipo: "warning",
+    icono: "trash"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tipo: "danger"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "btn btn-secondary"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

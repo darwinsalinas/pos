@@ -6,6 +6,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+
 .loader,
 .loader:before,
 .loader:after {
@@ -18,7 +19,7 @@
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #4c67ff;
+  color: #ff016d;
   font-size: 10px;
   margin: 80px auto;
   position: relative;

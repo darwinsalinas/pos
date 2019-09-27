@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import TablaProductos from './TablaProductos';
 import Loading from '../comunes/Loading';
+import Loader from '../comunes/Loader';
+import ImpuestosForm from '../Impuestos/ImpuestosForm'
 
 export default function Productos() {
-    const [lista, setLista] = useState([])
+    const [lista, setLista] = useState({data:[]})
+    const [loading, setLoading] = useState(true)
     const [showModalForm, setShowModalForm] = useState(false)
     const [currentItem, setCurrentItem] = useState(null)
     const [form, setForm] = useState({
@@ -83,11 +86,21 @@ export default function Productos() {
             })
     }
 
-    const loadData = () => {
-        let url = `/productos`
+    const loadData = (url='/productos') => {
+        if(!url) {
+           return
+        }
+
+        //let url = `/productos`
         axios.get(url)
-            .then(resp => { setLista(resp.data.data) })
-            .catch(err => { console.log(err.response.data.message) })
+            .then(resp => {
+                setLoading(false)
+                setLista(resp.data.data)
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.response.data.message)
+            })
     }
 
     const toggleModal = () => {
@@ -97,16 +110,26 @@ export default function Productos() {
     useEffect(loadData, [])
     return (
         <div className="row">
-            <div className="col-sm-12">
+            <div className="col-sm-12" >
                 {
-                    lista.length
-                        ? <TablaProductos
-                            lista={lista}
+                    loading
+                    ? <Loader />
+                    : <TablaProductos
+                            lista={lista.data}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
                         />
-                        : <Loading />
                 }
+                <nav aria-label="Page navigation example">
+                    <ul className="pagination">
+                        <li className="page-item">
+                            <button onClick={() => loadData(lista.prev_page_url)} className="page-link">Anterior</button>
+                        </li>
+                        <li className="page-item">
+                        <button onClick={() => loadData(lista.next_page_url)} className="page-link">Siguiente</button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     )
