@@ -12,15 +12,35 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $nombreProducto = $request->get('nombre', false);
+        $disponible = $request->get('disponible', true);
+        $costo = $request->get('costo', false);
+        $precio = $request->get('precio', false);
+        $tipo = $request->get('tipo', 'Consumible');
+        $operadorPrecio = $request->get('operador_precio', '=');
+        // dd($operadorPrecio);
+        $tipoId = $request->get('tipo_id', 1);
         $rs = Producto::with([
             'tipoProducto',
             'categoriaProducto',
             'impuestos'
         ])
-        // ->get();
+        ->where('nombre', 'like', '%'. $nombreProducto . '%')
+        ->where('disponible', $disponible)
+        ->when($costo, function ($query) use ($costo) {
+            $query->where('costo', $costo);
+        })
+        ->where('precio_venta', $operadorPrecio, $precio)
+        // ->whereHas('tipoProducto', function ($query) use ($tipo) {
+        //     $query->where('nombre', $tipo);
+        // })
+        ->where('tipo_producto_id', $tipoId)
+        //->toSql();
         ->paginate();
+
+        // dd($rs);
 
         return response()->json([
             'data' => $rs
