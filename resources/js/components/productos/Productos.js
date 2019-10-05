@@ -19,6 +19,9 @@ export default function Productos() {
         tipo_producto: null,
         categoria_producto: null
     })
+    const [formBuscador, setFormBuscador] = useState({
+        nombre: ''
+    })
 
 
     const loadDataSingle = () => {
@@ -65,6 +68,13 @@ export default function Productos() {
         })
     }
 
+    const handleChangebuscador = (e) => {
+        setFormBuscador({
+            ...formBuscador,
+            [e.target.name]: e.target.value
+        })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         let url = '/productos'
@@ -107,9 +117,37 @@ export default function Productos() {
         setShowModalForm(!showModalForm)
     }
 
+    const handleSubmitBuscador = (e) => {
+        setLoading(true)
+        e.preventDefault()
+        let url = '/productos'
+        axios.get(url, {
+            params: formBuscador
+        })
+        .then(resp => {
+            setLoading(false)
+            setLista(resp.data.data)
+        })
+        .catch(err => {
+            setLoading(false)
+            alert('error')
+        })
+    }
+
     useEffect(loadData, [])
     return (
         <div className="row">
+            <div className="col-sm-12">
+                <div className="container">
+                    <form onSubmit={(e) => handleSubmitBuscador(e)}>
+                        <div className="form-group row">
+                            <div className="col-sm-1-12">
+                                <input name="nombre" onChange={(e) => handleChangebuscador(e)} type="text" className="form-control" placeholder="Buscar" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div className="col-sm-12" >
                 {
                     loading

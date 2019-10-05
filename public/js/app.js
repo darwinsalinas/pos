@@ -62308,7 +62308,7 @@ function Pos() {
     href: "#"
   }, "Something else here")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_productos_Productos__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 }
 
 if (document.getElementById('appimpuestos')) {
@@ -62490,6 +62490,13 @@ function Productos() {
       form = _useState10[0],
       setForm = _useState10[1];
 
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    nombre: ''
+  }),
+      _useState12 = _slicedToArray(_useState11, 2),
+      formBuscador = _useState12[0],
+      setFormBuscador = _useState12[1];
+
   var loadDataSingle = function loadDataSingle() {
     if (currentItem) {
       var url = "productos/".concat(currentItem);
@@ -62525,6 +62532,10 @@ function Productos() {
 
   var handleChange = function handleChange(e) {
     setForm(_objectSpread({}, form, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var handleChangebuscador = function handleChangebuscador(e) {
+    setFormBuscador(_objectSpread({}, formBuscador, _defineProperty({}, e.target.name, e.target.value)));
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -62571,10 +62582,45 @@ function Productos() {
     setShowModalForm(!showModalForm);
   };
 
+  var handleSubmitBuscador = function handleSubmitBuscador(e) {
+    setLoading(true);
+    e.preventDefault();
+    var url = '/productos';
+    axios.get(url, {
+      params: formBuscador
+    }).then(function (resp) {
+      setLoading(false);
+      setLista(resp.data.data);
+    })["catch"](function (err) {
+      setLoading(false);
+      alert('error');
+    });
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return handleSubmitBuscador(e);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "nombre",
+    onChange: function onChange(e) {
+      return handleChangebuscador(e);
+    },
+    type: "text",
+    className: "form-control",
+    placeholder: "Buscar"
+  })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
   }, loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Loader__WEBPACK_IMPORTED_MODULE_3__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductos__WEBPACK_IMPORTED_MODULE_1__["default"], {
     lista: lista.data,

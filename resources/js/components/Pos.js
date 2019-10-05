@@ -27,7 +27,7 @@ export default function Pos() {
                 </div>
             </div>
             <div className="card-body">
-                <Impuestos />
+                <Productos />
             </div>
         </div>
     );

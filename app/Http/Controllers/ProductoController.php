@@ -32,7 +32,7 @@ class ProductoController extends Controller
         ->when($costo, function ($query) use ($costo) {
             $query->where('costo', $costo);
         })
-        ->where('precio_venta', $operadorPrecio, $precio)
+        // ->where('precio_venta', $operadorPrecio, $precio)
         // ->whereHas('tipoProducto', function ($query) use ($tipo) {
         //     $query->where('nombre', $tipo);
         // })
