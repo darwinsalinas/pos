@@ -62418,6 +62418,156 @@ function Loading() {
 
 /***/ }),
 
+/***/ "./resources/js/components/productos/BuscadorProductos.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/productos/BuscadorProductos.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BuscadorProductos; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ListTipoProducto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListTipoProducto */ "./resources/js/components/productos/ListTipoProducto.js");
+
+
+function BuscadorProductos(_ref) {
+  var handleSubmitBuscador = _ref.handleSubmitBuscador,
+      handleChangebuscador = _ref.handleChangebuscador,
+      disponible = _ref.disponible;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return handleSubmitBuscador(e);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "nombre",
+    onChange: function onChange(e) {
+      return handleChangebuscador(e);
+    },
+    type: "text",
+    className: "form-control",
+    placeholder: "Buscar"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "costo",
+    onChange: function onChange(e) {
+      return handleChangebuscador(e);
+    },
+    type: "number",
+    className: "form-control",
+    placeholder: "Costo"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "precio",
+    onChange: function onChange(e) {
+      return handleChangebuscador(e);
+    },
+    type: "number",
+    className: "form-control",
+    placeholder: "Precio"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    className: "form-check-input",
+    name: "disponible",
+    checked: disponible,
+    onChange: function onChange(e) {
+      return handleChangebuscador(e);
+    }
+  }), "Disponible")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListTipoProducto__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    etiqueta: "Tipo Producto",
+    name: "tipo"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Buscar")));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/productos/ListTipoProducto.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/productos/ListTipoProducto.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListTipoProducto; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function ListTipoProducto(_ref) {
+  var handleChange = _ref.handleChange,
+      etiqueta = _ref.etiqueta,
+      name = _ref.name,
+      selected = _ref.selected;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      list = _useState2[0],
+      setList = _useState2[1];
+
+  var getList = function getList() {
+    var url = '/tipos-productos';
+    axios.get(url).then(function (resp) {
+      setList(resp.data.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  var handleChangeEvent = function handleChangeEvent(e) {
+    if (handleChange) {
+      handleChange(e);
+    } else {
+      console.info('no se ha definido una funcion manejadora del evento change');
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(getList, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: ""
+  }, etiqueta ? etiqueta : 'Seleccione:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: handleChangeEvent,
+    className: "form-control",
+    name: name ? name : '',
+    value: selected
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: 0
+  }, "Seleccione una opci\xF3n de la lista"), list.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: item.id,
+      value: item.id
+    }, item.nombre);
+  })));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/productos/Productos.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/productos/Productos.js ***!
@@ -62434,6 +62584,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comunes_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../comunes/Loading */ "./resources/js/components/comunes/Loading.js");
 /* harmony import */ var _comunes_Loader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../comunes/Loader */ "./resources/js/components/comunes/Loader.js");
 /* harmony import */ var _Impuestos_ImpuestosForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Impuestos/ImpuestosForm */ "./resources/js/components/Impuestos/ImpuestosForm.js");
+/* harmony import */ var _BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BuscadorProductos */ "./resources/js/components/productos/BuscadorProductos.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -62447,6 +62598,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -62491,7 +62643,10 @@ function Productos() {
       setForm = _useState10[1];
 
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    nombre: ''
+    nombre: '',
+    costo: '',
+    precio: '',
+    disponible: true
   }),
       _useState12 = _slicedToArray(_useState11, 2),
       formBuscador = _useState12[0],
@@ -62535,7 +62690,9 @@ function Productos() {
   };
 
   var handleChangebuscador = function handleChangebuscador(e) {
-    setFormBuscador(_objectSpread({}, formBuscador, _defineProperty({}, e.target.name, e.target.value)));
+    var value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    console.log(value);
+    setFormBuscador(_objectSpread({}, formBuscador, _defineProperty({}, e.target.name, value)));
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -62604,23 +62761,11 @@ function Productos() {
     className: "col-sm-12"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: function onSubmit(e) {
-      return handleSubmitBuscador(e);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-1-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "nombre",
-    onChange: function onChange(e) {
-      return handleChangebuscador(e);
-    },
-    type: "text",
-    className: "form-control",
-    placeholder: "Buscar"
-  })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    disponible: formBuscador.disponible,
+    handleSubmitBuscador: handleSubmitBuscador,
+    handleChangebuscador: handleChangebuscador
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
   }, loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Loader__WEBPACK_IMPORTED_MODULE_3__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductos__WEBPACK_IMPORTED_MODULE_1__["default"], {
     lista: lista.data,
@@ -62644,7 +62789,14 @@ function Productos() {
       return loadData(lista.next_page_url);
     },
     className: "page-link"
-  }, "Siguiente"))))));
+  }, "Siguiente"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    handleSubmitBuscador: handleSubmitBuscador,
+    handleChangebuscador: handleChangebuscador
+  }))));
 }
 
 /***/ }),

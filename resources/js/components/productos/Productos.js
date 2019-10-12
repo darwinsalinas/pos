@@ -3,6 +3,7 @@ import TablaProductos from './TablaProductos';
 import Loading from '../comunes/Loading';
 import Loader from '../comunes/Loader';
 import ImpuestosForm from '../Impuestos/ImpuestosForm'
+import BuscadorProductos from './BuscadorProductos';
 
 export default function Productos() {
     const [lista, setLista] = useState({data:[]})
@@ -20,7 +21,10 @@ export default function Productos() {
         categoria_producto: null
     })
     const [formBuscador, setFormBuscador] = useState({
-        nombre: ''
+        nombre: '',
+        costo: '',
+        precio: '',
+        disponible: true
     })
 
 
@@ -69,9 +73,11 @@ export default function Productos() {
     }
 
     const handleChangebuscador = (e) => {
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        console.log(value)
         setFormBuscador({
             ...formBuscador,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         })
     }
 
@@ -139,13 +145,11 @@ export default function Productos() {
         <div className="row">
             <div className="col-sm-12">
                 <div className="container">
-                    <form onSubmit={(e) => handleSubmitBuscador(e)}>
-                        <div className="form-group row">
-                            <div className="col-sm-1-12">
-                                <input name="nombre" onChange={(e) => handleChangebuscador(e)} type="text" className="form-control" placeholder="Buscar" />
-                            </div>
-                        </div>
-                    </form>
+                    <BuscadorProductos
+                        disponible={formBuscador.disponible}
+                        handleSubmitBuscador={handleSubmitBuscador}
+                        handleChangebuscador={handleChangebuscador}
+                    />
                 </div>
             </div>
             <div className="col-sm-12" >
@@ -168,6 +172,14 @@ export default function Productos() {
                         </li>
                     </ul>
                 </nav>
+            </div>
+            <div className="col-sm-12">
+                <div className="container">
+                    <BuscadorProductos
+                        handleSubmitBuscador={handleSubmitBuscador}
+                        handleChangebuscador={handleChangebuscador}
+                    />
+                </div>
             </div>
         </div>
     )

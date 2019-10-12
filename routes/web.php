@@ -12,6 +12,12 @@ Route::apiResource('ambitos-impuestos', 'AmbitoImpuestoController', [
     ]
 ]);
 
+Route::apiResource('tipos-productos', 'TipoProductoController', [
+    'parameters' => [
+        'tipos-productos' => 'model'
+    ]
+]);
+
 Route::apiResource('calculos-impuestos', 'CalculoImpuestoController', [
     'parameters' => [
         'calculos-impuestos' => 'model'

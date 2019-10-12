@@ -14,7 +14,11 @@ class TipoProductoController extends Controller
      */
     public function index()
     {
-        //
+        $rs = TipoProducto::all();
+
+        return response()->json([
+            'data' => $rs
+        ], 200);
     }
 
     /**
