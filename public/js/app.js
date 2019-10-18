@@ -62257,12 +62257,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Impuestos_Impuestos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Impuestos/Impuestos */ "./resources/js/components/Impuestos/Impuestos.js");
 /* harmony import */ var _productos_Productos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./productos/Productos */ "./resources/js/components/productos/Productos.js");
 /* harmony import */ var _comunes_Loader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comunes/Loader */ "./resources/js/components/comunes/Loader.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 
 function Pos() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showBuscadorForm = _useState2[0],
+      setShowBuscadorForm = _useState2[1];
+
   var cardStyles = {
     position: 'absolute',
     willChange: 'transform',
@@ -62295,20 +62308,17 @@ function Pos() {
     style: cardStyles
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown-header"
-  }, "Dropdown Header:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "dropdown-item",
-    href: "#"
-  }, "Action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "dropdown-item",
-    href: "#"
-  }, "Another action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown-divider"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "dropdown-item",
-    href: "#"
-  }, "Something else here")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Dropdown Header:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return setShowBuscadorForm(true);
+    },
+    className: "dropdown-item"
+  }, "Buscar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_productos_Productos__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_productos_Productos__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    showBuscadorForm: showBuscadorForm,
+    setShowBuscadorForm: setShowBuscadorForm
+  })));
 }
 
 if (document.getElementById('appimpuestos')) {
@@ -62371,7 +62381,7 @@ function Button(_ref) {
     className: tipoBoton
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: iconoBoton
-  }), texto ? ' ' + texto : 'Click');
+  }), texto ? ' ' + texto : '');
 }
 
 /***/ }),
@@ -62436,16 +62446,17 @@ __webpack_require__.r(__webpack_exports__);
 function BuscadorProductos(_ref) {
   var handleSubmitBuscador = _ref.handleSubmitBuscador,
       handleChangebuscador = _ref.handleChangebuscador,
-      disponible = _ref.disponible;
+      disponible = _ref.disponible,
+      setShowBuscadorForm = _ref.setShowBuscadorForm;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: function onSubmit(e) {
       return handleSubmitBuscador(e);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-1-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "nombre"
+  }, "Nombre"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "nombre",
     onChange: function onChange(e) {
       return handleChangebuscador(e);
@@ -62454,8 +62465,10 @@ function BuscadorProductos(_ref) {
     className: "form-control",
     placeholder: "Buscar"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-1-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "costo"
+  }, "Costo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "costo",
     onChange: function onChange(e) {
       return handleChangebuscador(e);
@@ -62464,8 +62477,10 @@ function BuscadorProductos(_ref) {
     className: "form-control",
     placeholder: "Costo"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-1-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "precio"
+  }, "Precio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "precio",
     onChange: function onChange(e) {
       return handleChangebuscador(e);
@@ -62473,6 +62488,11 @@ function BuscadorProductos(_ref) {
     type: "number",
     className: "form-control",
     placeholder: "Precio"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListTipoProducto__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    etiqueta: "Tipo Producto",
+    name: "tipo"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-check"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -62486,12 +62506,15 @@ function BuscadorProductos(_ref) {
       return handleChangebuscador(e);
     }
   }), "Disponible")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "form-group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ListTipoProducto__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    etiqueta: "Tipo Producto",
-    name: "tipo"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit"
+    className: "form-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return setShowBuscadorForm(false);
+    },
+    className: "btn btn-secondary"
+  }, "Cancelar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-success float-right"
   }, "Buscar")));
 }
 
@@ -62605,7 +62628,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Productos() {
+function Productos(_ref) {
+  var showBuscadorForm = _ref.showBuscadorForm,
+      setShowBuscadorForm = _ref.setShowBuscadorForm;
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     data: []
   }),
@@ -62740,6 +62766,7 @@ function Productos() {
   };
 
   var handleSubmitBuscador = function handleSubmitBuscador(e) {
+    setShowBuscadorForm(false);
     setLoading(true);
     e.preventDefault();
     var url = '/productos';
@@ -62755,17 +62782,25 @@ function Productos() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(loadData, []);
+
+  if (showBuscadorForm) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-sm-12"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      setShowBuscadorForm: setShowBuscadorForm,
+      disponible: formBuscador.disponible,
+      handleSubmitBuscador: handleSubmitBuscador,
+      handleChangebuscador: handleChangebuscador
+    }))));
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    disponible: formBuscador.disponible,
-    handleSubmitBuscador: handleSubmitBuscador,
-    handleChangebuscador: handleChangebuscador
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-12"
   }, loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Loader__WEBPACK_IMPORTED_MODULE_3__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TablaProductos__WEBPACK_IMPORTED_MODULE_1__["default"], {
     lista: lista.data,
@@ -62789,14 +62824,7 @@ function Productos() {
       return loadData(lista.next_page_url);
     },
     className: "page-link"
-  }, "Siguiente"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-sm-12"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscadorProductos__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    handleSubmitBuscador: handleSubmitBuscador,
-    handleChangebuscador: handleChangebuscador
-  }))));
+  }, "Siguiente"))))));
 }
 
 /***/ }),
@@ -62877,31 +62905,18 @@ function TablaProductosItem(_ref) {
     className: "btn-group btn-group-sm",
     role: "group",
     "aria-label": ""
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    texto: "Editar",
-    icono: "pencil-alt",
-    accion: function accion() {
-      return handleEdit(id);
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    tipo: "warning",
-    icono: "trash"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    tipo: "danger"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "btn btn-secondary"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-eye"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick() {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comunes_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    icono: "pencil-alt",
+    tipo: "secondary",
+    accion: function accion() {
       return handleEdit(id);
-    },
-    type: "button",
-    className: "btn btn-secondary"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-pencil-alt"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return handleDelete(id);
     },

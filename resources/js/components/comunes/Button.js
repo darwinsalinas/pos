@@ -10,7 +10,7 @@ export default function Button({ texto, tipo, icono, accion }) {
         >
             <i className={iconoBoton}></i>
             {
-                texto ? ' ' + texto : 'Click'
+                texto ? ' ' + texto : ''
             }
         </button>
     )

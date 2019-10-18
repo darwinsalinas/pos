@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Impuestos from './Impuestos/Impuestos';
 import Productos from './productos/Productos';
 import Loader from './comunes/Loader';
 
 export default function Pos() {
+
+    const [showBuscadorForm, setShowBuscadorForm] = useState(false)
 
     const cardStyles = {
         position: 'absolute', willChange: 'transform', top: '0px', left: '0px', transform: 'translate3d(17px, 17px, 0px)'
@@ -19,15 +21,12 @@ export default function Pos() {
                     </a>
                     <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" x-placement="bottom-end" style={cardStyles}>
                         <div className="dropdown-header">Dropdown Header:</div>
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a>
+                        <button onClick={() => setShowBuscadorForm(true)} className="dropdown-item">Buscar</button>
                     </div>
                 </div>
             </div>
             <div className="card-body">
-                <Productos />
+                <Productos showBuscadorForm={showBuscadorForm} setShowBuscadorForm={setShowBuscadorForm}/>
             </div>
         </div>
     );

@@ -30,16 +30,10 @@ export default function TablaProductosItem({
             </td>
             <td>
                 <div className="btn-group btn-group-sm" role="group" aria-label="">
-                    <Button />
-                    <Button texto="Editar" icono="pencil-alt" accion={() => handleEdit(id)} />
-                    <Button tipo="warning" icono="trash"/>
-                    <Button tipo="danger"/>
                     <button type="button" className="btn btn-secondary">
                         <i className="fa fa-eye"></i>
                     </button>
-                    <button onClick={() => handleEdit(id)} type="button" className="btn btn-secondary">
-                        <i className="fa fa-pencil-alt"></i>
-                    </button>
+                    <Button icono="pencil-alt" tipo="secondary" accion={() => handleEdit(id)} />
                     <button onClick={() => handleDelete(id)} type="button" className="btn btn-danger">
                         <i className="fa fa-trash"></i>
                     </button>

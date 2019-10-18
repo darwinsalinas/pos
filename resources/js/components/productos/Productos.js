@@ -5,7 +5,7 @@ import Loader from '../comunes/Loader';
 import ImpuestosForm from '../Impuestos/ImpuestosForm'
 import BuscadorProductos from './BuscadorProductos';
 
-export default function Productos() {
+export default function Productos({showBuscadorForm, setShowBuscadorForm}) {
     const [lista, setLista] = useState({data:[]})
     const [loading, setLoading] = useState(true)
     const [showModalForm, setShowModalForm] = useState(false)
@@ -124,6 +124,7 @@ export default function Productos() {
     }
 
     const handleSubmitBuscador = (e) => {
+        setShowBuscadorForm(false)
         setLoading(true)
         e.preventDefault()
         let url = '/productos'
@@ -141,17 +142,24 @@ export default function Productos() {
     }
 
     useEffect(loadData, [])
-    return (
-        <div className="row">
-            <div className="col-sm-12">
-                <div className="container">
-                    <BuscadorProductos
-                        disponible={formBuscador.disponible}
-                        handleSubmitBuscador={handleSubmitBuscador}
-                        handleChangebuscador={handleChangebuscador}
-                    />
+    if (showBuscadorForm) {
+        return (
+            <div className="row">
+                <div className="col-sm-12">
+                    <div className="container">
+                        <BuscadorProductos
+                            setShowBuscadorForm={setShowBuscadorForm}
+                            disponible={formBuscador.disponible}
+                            handleSubmitBuscador={handleSubmitBuscador}
+                            handleChangebuscador={handleChangebuscador}
+                        />
+                    </div>
                 </div>
             </div>
+        )
+    }
+    return (
+        <div className="row">
             <div className="col-sm-12" >
                 {
                     loading
@@ -172,14 +180,6 @@ export default function Productos() {
                         </li>
                     </ul>
                 </nav>
-            </div>
-            <div className="col-sm-12">
-                <div className="container">
-                    <BuscadorProductos
-                        handleSubmitBuscador={handleSubmitBuscador}
-                        handleChangebuscador={handleChangebuscador}
-                    />
-                </div>
             </div>
         </div>
     )
