@@ -1,4 +1,7 @@
 <?php
+use App\Exports\ProductosExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 Route::get('inventarios', function () {
     return view('inventario');
 });
@@ -41,3 +44,7 @@ Route::apiResource('notificaciones', 'NotificaionesController', [
         'notificaciones' => 'model'
     ]
 ]);
+
+Route::get('excel', function () {
+    return Excel::download(new ProductosExport, 'productos.xlsx');
+});
